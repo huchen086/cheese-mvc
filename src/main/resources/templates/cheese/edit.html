@@ -2,11 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-
 <nav th:replace="fragments :: navigation"></nav>
 
 <h1 th:text="${title}">Default title</h1>
 
+<br/>
+
+<h3 th:text="${'Edit Cheese ' + cheese.name + '(id=' + cheese.id + ')'}"></h3>
 
 <form method="post" style="max-width:600px" th:object="${cheese}">
     <div class="form-group">
@@ -28,7 +30,8 @@
                     th:value="${category.id}"></option>
         </select>
     </div>
-    <input type="submit" value="Add Cheese" />
+    <input type="hidden" th:field="*{id}"/>
+    <input type="submit" value="Edit Cheese" />
 </form>
 
 </body>
